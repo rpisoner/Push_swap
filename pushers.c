@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:07:33 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/01/25 17:10:49 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:27:07 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,30 @@
 
 void	pb(t_list **a, t_list **b)
 {
+	t_list	*new;
 	t_list	*temp;
 
 	if (!b)
 		return ;
-	temp = (*b)->next;
-	(*b)->next = *a;
-	*a = temp;
+	new = ft_lstnew((*a)->content);
+	ft_lstadd_front(b, new);
+	temp = *a;
+	*a = (*a)->next;
+	free(temp);
+	write(1, "pb\n", 3);
 }
 
 void	pa(t_list **a, t_list **b)
 {
+	t_list	*new;
 	t_list	*temp;
 
 	if (!a)
 		return ;
-	temp = (*a)->next;
-	(*a)->next = *b;
-	*b = temp;
+	new = ft_lstnew((*b)->content);
+	ft_lstadd_front(a, new);
+	temp = *b;
+	*b = (*b)->next;
+	free(temp);
+	write(1, "pa\n", 3);
 }

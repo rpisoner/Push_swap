@@ -17,7 +17,12 @@ SRC_DIR = .
 # Sources & objects
 #########################################################################################
 FILES = push_swap \
-        push_swap_utils
+        push_swap_utils \
+		pushers \
+		inverters \
+		rotators \
+		swappers \
+		lst1 
 SRCS = $(addsuffix .c, $(FILES))
 OBJS = $(addsuffix .o, $(FILES))
 

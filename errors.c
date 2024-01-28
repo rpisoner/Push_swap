@@ -1,46 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swappers.c                                         :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 11:07:01 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/01/28 16:51:50 by rpisoner         ###   ########.fr       */
+/*   Created: 2024/01/28 20:05:09 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/01/28 20:05:24 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_list *a)
+int	check_errors(char **str)
 {
-	int	aux;
+	size_t	i;
+	size_t	j;
 
-	aux = 0;
-	if (!a->next)
-		return ;
-	aux = a->content;
-	a->content = a->next->content;
-	a->next->content = aux;
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_list *b)
-{
-	int	aux;
-
-	aux = 0;
-	if (!b->next)
-		return ;
-	aux = b->content;
-	b->content = b->next->content;
-	b->next->content = aux;
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_list *a, t_list *b)
-{
-	sa(a);
-	sb(b);
-	write(1, "ss\n", 3);
+	i = 1;
+	j = 0;
+	while (str[i]) 
+	{
+		j = 0;
+		if ((str[i][0] < '0' || str[i][0] > '9') && str[i][j++] != '-')
+			if (str[i][0] != '+')
+				return (0);
+		while (str[i][j])
+		{
+			if ((str[i][j] < '0' || str[i][j] > '9') && str[i][j] != ' ')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	while (str[])
+		return (0);
+	return (1);
 }
