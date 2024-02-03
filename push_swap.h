@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:03:59 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/01/28 18:40:29 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/02/03 14:03:24 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,25 @@ void	rr(t_list **a, t_list **b);
 void	rra(t_list **a);
 void	rrb(t_list **b);
 void	rrr(t_list **a, t_list **b);
-
+//LINKED LISTS FUNCTIONS
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list *lst);
-
-int		check_errors(char **str);
-
+//PUSH_SWAP_UTILS
+int		ft_atoi(const char *str);
+char	**ft_split(char const *s, char c);
+//PUSH_SWAP_UTILS2
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlen(const char *s);
+int		ft_strcmp(const char *s1, const char *s2);
+//ERRORS
+void	check_errors(char **str);
+void	error_exit(void);
+void	exception_1num_space(char **arguments);
+void	duplicated_numbers(char **arguments);
+//PARSE
+t_list	*argument_parse(int argc, char *argv[]);
+//FREE_STUFF
+void	free_stack(t_list	**stack);
 #endif
