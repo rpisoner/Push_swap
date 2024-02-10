@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:03:59 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/03 14:03:24 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:02:30 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-void	sa(t_list *a);
-void	sb(t_list *b);
-void	ss(t_list *a, t_list *b);
+//RULES
+void	sa(t_list **a);
+void	sb(t_list **b);
+void	ss(t_list **a, t_list **b);
 void	pa(t_list **a, t_list **b);
 void	pb(t_list **a, t_list **b);
 void	ra(t_list **a);
@@ -49,9 +50,12 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	check_errors(char **str);
 void	error_exit(void);
 void	exception_1num_space(char **arguments);
-void	duplicated_numbers(char **arguments);
+void	duplicated_nums(t_list *lst);
 //PARSE
 t_list	*argument_parse(int argc, char *argv[]);
+int		is_organized(t_list *lst);
+//ALGORITHM
+void	algorithm(t_list **stack_a);
 //FREE_STUFF
 void	free_stack(t_list	**stack);
 #endif

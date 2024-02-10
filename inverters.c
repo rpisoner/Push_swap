@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:06:43 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/01/28 12:25:10 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/02/10 15:39:18 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	rra(t_list **a)
 		penultimate = penultimate->next;
 	penultimate->next = NULL;
 	(*a)->next = first;
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_list **b)
@@ -44,6 +45,7 @@ void	rrb(t_list **b)
 		penultimate = penultimate->next;
 	penultimate->next = NULL;
 	(*b)->next = first;
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_list **a, t_list **b)

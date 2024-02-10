@@ -22,6 +22,7 @@ FILES = push_swap \
 		lst \
 		errors \
 		argument_parse \
+		algorithm \
 		free_stuff \
 		pushers \
 		inverters \
