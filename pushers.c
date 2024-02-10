@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:07:33 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/01/28 16:27:07 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/02/10 12:16:27 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	pb(t_list **a, t_list **b)
 	t_list	*new;
 	t_list	*temp;
 
-	if (!b)
+	if (!*a)
 		return ;
 	new = ft_lstnew((*a)->content);
 	ft_lstadd_front(b, new);
