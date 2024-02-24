@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:03:59 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/10 18:02:30 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/02/24 17:02:26 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_list
 {
 	int				content;
+	size_t			position;
 	struct s_list	*next;
 }	t_list;
 
@@ -56,6 +57,12 @@ t_list	*argument_parse(int argc, char *argv[]);
 int		is_organized(t_list *lst);
 //ALGORITHM
 void	algorithm(t_list **stack_a);
-//FREE_STUFF
+//Algorithm 2
+void	assign_index(t_list **stack_a);
+void	inicialize_index(t_list **stack_a);
+//BORRAR
 void	free_stack(t_list	**stack);
+
+void	print_stack(t_list *stack);
+
 #endif

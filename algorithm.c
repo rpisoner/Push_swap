@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:14:31 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/15 15:25:55 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/02/24 18:14:00 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,45 +52,30 @@ void	three_elements(t_list **stack, int n)
 	}
 }
 
-void	other_elements(t_list **stack_a, t_list **stack_b)
-{
-	t_list	*copy;
-	int		diff;
-	int		og_size;
-
-	copy = *stack_a;
-	og_size = ft_lstsize(*stack_a);
-	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	diff = 0;
-	while (*stack_a)
-	{
-		diff = (*stack_a)->content - (*stack_b)->content;
-		if ((*stack_a)->next->content)
-		{
-			if (diff == 1 || diff < (*stack_a)->next->content - (*stack_b)->content)
-				pb(stack_a, stack_b);
-			else
-				ra(stack_a);
-			*stack_a = (*stack_a)->next;
-			if (!(*stack_a)->next)
-				*stack_a = copy;
-		}
-		else
-			break;
-	}
-	while (ft_lstsize(*stack_b) > 0)
-		pa(stack_a, stack_b);
-}
 //while (1)
 //	recorre todooooo el stacka mirando donde deberias colocar cada nodo
 //	y cuando el nodo que quieres pushear y el nodo al que vas a pushear estan en la cabezera pusheas
+void	other_elements(t_list **stack_a, t_list **stack_b)
+{
+	size_t	half;
+	size_t	i;
+
+	i = 0;
+	half = (ft_lstsize(*stack_a) / 2) + 1;
+	while (i < half)
+	{
+		pb(stack_a, stack_b);
+		i++;
+	}
+}
 
 void	algorithm(t_list **stack_a)
 {
 	t_list	*stack_b;
 
 	stack_b = NULL;
+	inicialize_index(stack_a);
+	assign_index(stack_a);
 	if (ft_lstsize(*stack_a) == 2)
 		two_elements(stack_a, 0);
 	else if (ft_lstsize(*stack_a) == 3)
