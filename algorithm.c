@@ -74,7 +74,6 @@ void	algorithm(t_list **stack_a)
 	t_list	*stack_b;
 
 	stack_b = NULL;
-	inicialize_index(stack_a);
 	assign_index(stack_a);
 	if (ft_lstsize(*stack_a) == 2)
 		two_elements(stack_a, 0);

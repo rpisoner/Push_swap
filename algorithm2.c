@@ -24,16 +24,6 @@ void	inicialize_index(t_list **stack_a)
 	}
 }
 
-void	last_number(t_list **stack)
-{
-	t_list	*copy;
-
-	copy = *stack;
-	while (copy->position != 0)
-		copy = copy->next;
-	copy->position = ft_lstsize(*stack);
-}
-
 void	assign_index(t_list **stack_a)
 {
 	size_t	i;
@@ -43,7 +33,8 @@ void	assign_index(t_list **stack_a)
 
 	i = 1;
 	move = *stack_a;
-	while (i < (size_t)ft_lstsize(*stack_a))
+	inicialize_index(stack_a);
+	while (i <= (size_t)ft_lstsize(*stack_a))
 	{
 		copy = move;
 		current_index = move;
@@ -53,12 +44,9 @@ void	assign_index(t_list **stack_a)
 				current_index = copy;
 			copy = copy->next;
 		}
-		if (current_index->position == 0)
-		{
-			current_index->position = i++;
-			if (current_index == move)
-				move = move->next;
-		}
+		current_index->position = i;
+		while ((current_index == move || move->position != 0) && move->next != NULL)
+			move = move->next;
+		i++;
 	}
-	last_number(stack_a);
 }

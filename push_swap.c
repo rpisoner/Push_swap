@@ -12,11 +12,20 @@
 
 #include "push_swap.h"
 
+void	print_position(t_list *stack)
+{
+	while (stack != NULL)
+	{
+		printf("%10d -> ", (int)stack->position);
+		stack = stack->next;
+	}
+	printf("NULL\n");
+}
 void	print_stack(t_list *stack)
 {
 	while (stack != NULL)
 	{
-		printf("%d -> ", (int)stack->content);
+		printf("%10d -> ", (int)stack->content);
 		stack = stack->next;
 	}
 	printf("NULL\n");
@@ -40,5 +49,6 @@ int	main(int argc, char *argv[])
 	algorithm(&stack_a);
 	printf("After:\n");
 	print_stack(stack_a);
+	print_position(stack_a);
 	exit (0);
 }
