@@ -64,8 +64,20 @@ void	other_elements(t_list **stack_a, t_list **stack_b)
 	half = (ft_lstsize(*stack_a) / 2) + 1;
 	while (i < half)
 	{
-		pb(stack_a, stack_b);
+		if ((*stack_a)->position < half)
+			pb(stack_a, stack_b);
+		else
+			ra(stack_a);
 		i++;
+	}
+	while (ft_lstsize(*stack_a) > 3)
+	{
+		if ((*stack_a)->position == (size_t)ft_lstsize(*stack_a)
+			|| (*stack_a)->position == (size_t)ft_lstsize(*stack_a) - 1
+			|| (*stack_a)->position == (size_t)ft_lstsize(*stack_a) - 2)
+			ra(stack_a);
+		else
+			pb(stack_a, stack_b);
 	}
 }
 
@@ -75,6 +87,7 @@ void	algorithm(t_list **stack_a)
 
 	stack_b = NULL;
 	assign_index(stack_a);
+	print_position(*stack_a);
 	if (ft_lstsize(*stack_a) == 2)
 		two_elements(stack_a, 0);
 	else if (ft_lstsize(*stack_a) == 3)

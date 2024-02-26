@@ -64,5 +64,6 @@ void	inicialize_index(t_list **stack_a);
 void	free_stack(t_list	**stack);
 
 void	print_stack(t_list *stack);
+void	print_position(t_list *stack);
 
 #endif
