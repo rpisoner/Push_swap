@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:14:31 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/24 18:14:00 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:54:06 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,59 @@ void	three_elements(t_list **stack, int n)
 //while (1)
 //	recorre todooooo el stacka mirando donde deberias colocar cada nodo
 //	y cuando el nodo que quieres pushear y el nodo al que vas a pushear estan en la cabezera pusheas
+
+size_t	calc_original_pos(t_list *stack, t_list *node)
+{
+	t_list	*copy;
+	int		node_segment_size;
+
+	copy = node;
+	node_segment_size = 0;
+	while (copy)
+	{
+		node_segment_size++;
+		copy = copy->next;
+	}
+	return (ft_lstsize(stack) - node_segment_size);
+}
+
+void	move_top(t_list **stack_a, t_list **stack_b, t_list *following)
+{
+	t_list	*copy_a;
+	t_list	*copy_b;
+	int		original_pos;
+
+	original_pos = calc_original_pos(*stack_a, following);
+	copy_a = *stack_a;
+	copy_b = *stack_b;
+	while (ft_lstsize(following) != ft_lstsize(*stack_a))
+		ra(stack_a);
+	if (*stack_a)
+		pa(stack_a, stack_b);
+	while (ft_lstsize(following) != original_pos)
+		rra(stack_a);
+}
+
+t_list	*find_next(t_list *stack_a, t_list *stack_b)
+{
+	t_list	*following;
+	t_list	*stackb_copy;
+
+	following = stack_a;
+	stackb_copy = stack_b;
+	while (stackb_copy->position - following->position != 1)
+	{
+		if (!following->content)
+		{
+			stackb_copy = stackb_copy->next;
+			following = stack_a;
+		}
+		else if (following->next != NULL)
+			following = following->next;
+	}
+	return (following);
+}
+
 void	other_elements(t_list **stack_a, t_list **stack_b)
 {
 	size_t	half;
@@ -79,6 +132,9 @@ void	other_elements(t_list **stack_a, t_list **stack_b)
 		else
 			pb(stack_a, stack_b);
 	}
+	three_elements(stack_a, 0);
+	while (*stack_b && *stack_a)
+		move_top(stack_a, stack_b, find_next(*stack_a, *stack_b));
 }
 
 void	algorithm(t_list **stack_a)

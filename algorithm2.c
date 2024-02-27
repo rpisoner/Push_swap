@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:20:27 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/24 17:01:43 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:59:40 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ void	assign_index(t_list **stack_a)
 	size_t	i;
 	t_list	*current_index;
 	t_list	*copy;
-	t_list	*move;
+	t_list	*m;
 
 	i = 1;
-	move = *stack_a;
+	m = *stack_a;
 	inicialize_index(stack_a);
 	while (i <= (size_t)ft_lstsize(*stack_a))
 	{
-		copy = move;
-		current_index = move;
+		copy = m;
+		current_index = m;
 		while (copy != NULL)
 		{
 			if (current_index->content > copy->content && copy->position == 0)
@@ -45,8 +45,8 @@ void	assign_index(t_list **stack_a)
 			copy = copy->next;
 		}
 		current_index->position = i;
-		while ((current_index == move || move->position != 0) && move->next != NULL)
-			move = move->next;
+		while ((current_index == m || m->position != 0) && m->next != NULL)
+			m = m->next;
 		i++;
 	}
 }
