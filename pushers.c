@@ -20,6 +20,7 @@ void	pb(t_list **a, t_list **b)
 	if (!*a)
 		return ;
 	new = ft_lstnew((*a)->content);
+	new->position = (*a)->position;
 	ft_lstadd_front(b, new);
 	temp = *a;
 	*a = (*a)->next;
@@ -35,6 +36,7 @@ void	pa(t_list **a, t_list **b)
 	if (!a)
 		return ;
 	new = ft_lstnew((*b)->content);
+	new->position = (*b)->position;
 	ft_lstadd_front(a, new);
 	temp = *b;
 	*b = (*b)->next;

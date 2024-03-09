@@ -40,12 +40,12 @@ void	assign_index(t_list **stack_a)
 		current_index = m;
 		while (copy != NULL)
 		{
-			if (current_index->content > copy->content && copy->position == 0)
+			if (copy->position == 0 && current_index->content > copy->content)
 				current_index = copy;
 			copy = copy->next;
 		}
 		current_index->position = i;
-		while ((current_index == m || m->position != 0) && m->next != NULL)
+		while (m->next != NULL && (current_index == m || m->position != 0))
 			m = m->next;
 		i++;
 	}

@@ -56,65 +56,45 @@ void	three_elements(t_list **stack, int n)
 //	recorre todooooo el stacka mirando donde deberias colocar cada nodo
 //	y cuando el nodo que quieres pushear y el nodo al que vas a pushear estan en la cabezera pusheas
 
-size_t	calc_original_pos(t_list *stack, t_list *node)
+void	move(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*copy;
-	int		node_segment_size;
+	t_list	*aux_b;
+	int		b_size;
 
-	copy = node;
-	node_segment_size = 0;
-	while (copy)
+	b_size = ft_lstsize(*stack_b);
+	while (b_size != 0)
 	{
-		node_segment_size++;
-		copy = copy->next;
-	}
-	return (ft_lstsize(stack) - node_segment_size);
-}
-
-void	move_top(t_list **stack_a, t_list **stack_b, t_list *following)
-{
-	t_list	*copy_a;
-	t_list	*copy_b;
-	int		original_pos;
-
-	original_pos = calc_original_pos(*stack_a, following);
-	copy_a = *stack_a;
-	copy_b = *stack_b;
-	while (ft_lstsize(following) != ft_lstsize(*stack_a))
-		ra(stack_a);
-	if (*stack_a)
-		pa(stack_a, stack_b);
-	while (ft_lstsize(following) != original_pos)
-		rra(stack_a);
-}
-
-t_list	*find_next(t_list *stack_a, t_list *stack_b)
-{
-	t_list	*following;
-	t_list	*stackb_copy;
-
-	following = stack_a;
-	stackb_copy = stack_b;
-	while (stackb_copy->position - following->position != 1)
-	{
-		if (!following->content)
+		aux_b = *stack_b;
+		while (aux_b && (*stack_a)->position - aux_b->position != 1)
+			aux_b = aux_b->next;
+		if (!aux_b)
 		{
-			stackb_copy = stackb_copy->next;
-			following = stack_a;
+			error_exit();
 		}
-		else if (following->next != NULL)
-			following = following->next;
+		if (aux_b->position > (size_t)(b_size / 2))
+		{
+			while (ft_lstsize(aux_b) != b_size)
+				rrb(stack_b);
+		}
+		else
+		{
+			while (ft_lstsize(aux_b) != b_size)
+				rb(stack_b);
+		}
+		pa(stack_a, stack_b);
+		b_size--;
 	}
-	return (following);
 }
 
 void	other_elements(t_list **stack_a, t_list **stack_b)
 {
 	size_t	half;
+	size_t	max_size;
 	size_t	i;
 
 	i = 0;
 	half = (ft_lstsize(*stack_a) / 2) + 1;
+	max_size = ft_lstsize(*stack_a);
 	while (i < half)
 	{
 		if ((*stack_a)->position < half)
@@ -125,16 +105,16 @@ void	other_elements(t_list **stack_a, t_list **stack_b)
 	}
 	while (ft_lstsize(*stack_a) > 3)
 	{
-		if ((*stack_a)->position == (size_t)ft_lstsize(*stack_a)
-			|| (*stack_a)->position == (size_t)ft_lstsize(*stack_a) - 1
-			|| (*stack_a)->position == (size_t)ft_lstsize(*stack_a) - 2)
+		if ((*stack_a)->position == max_size
+			|| (*stack_a)->position == max_size - 1
+			|| (*stack_a)->position == max_size - 2)
 			ra(stack_a);
 		else
 			pb(stack_a, stack_b);
 	}
-	three_elements(stack_a, 0);
-	while (*stack_b && *stack_a)
-		move_top(stack_a, stack_b, find_next(*stack_a, *stack_b));
+	if (!is_organized(*stack_a))
+		three_elements(stack_a, 0);
+	move(stack_a, stack_b);
 }
 
 void	algorithm(t_list **stack_a)
@@ -143,7 +123,6 @@ void	algorithm(t_list **stack_a)
 
 	stack_b = NULL;
 	assign_index(stack_a);
-	print_position(*stack_a);
 	if (ft_lstsize(*stack_a) == 2)
 		two_elements(stack_a, 0);
 	else if (ft_lstsize(*stack_a) == 3)

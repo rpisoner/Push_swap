@@ -40,15 +40,15 @@ int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
 
-	check_errors(argv);
+	//check_errors(argv);
 	if (argc == 1)
 		exit (0);
 	stack_a = argument_parse(argc, argv);
 	if (stack_a == NULL || is_organized(stack_a) == 1)
 		exit (0);
 	algorithm(&stack_a);
-	printf("After:\n");
-	print_stack(stack_a);
-	print_position(stack_a);
-	exit (0);
+	// printf("After:\n");
+	// print_stack(stack_a);
+	// print_position(stack_a);
+	exit(0);
 }

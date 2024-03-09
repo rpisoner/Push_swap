@@ -15,7 +15,7 @@
 void	error_exit(void)
 {
 	write(2, "Error\n", 6);
-	exit(0);
+	exit(1);
 }
 
 void	exception_1num_space(char **arguments)
