@@ -6,20 +6,23 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:03:59 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/24 17:02:26 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/03/25 18:08:14 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
 typedef struct s_list
 {
 	int				content;
-	size_t			position;
+	int				position;
+	int				new_pos;
+	int				best_pos;
+	int				price_a;
+	int				price_b;
 	struct s_list	*next;
 }	t_list;
 
@@ -55,14 +58,26 @@ void	duplicated_nums(t_list *lst);
 //PARSE
 t_list	*argument_parse(int argc, char *argv[]);
 int		is_organized(t_list *lst);
+//TWO_AND_THREE_ELEMENTS
+void	two_elements(t_list **stack, int n_stack);
+void	three_elements(t_list **stack, int n);
 //ALGORITHM
 void	algorithm(t_list **stack_a);
-//Algorithm 2
+//INDEX_AND_NEW_POS
 void	assign_index(t_list **stack_a);
 void	inicialize_index(t_list **stack_a);
+void	calculate_new_positions(t_list **stack_b);
+int		abs(int value);
+//PRICES_AND_POSITIONS
+void	set_prices(t_list **stack_b, int a_size, int b_size);
+void	set_best_pos(t_list **stack_a, t_list **stack_b);
+//REAL_MOVES
+void	real_moves(t_list **sa, t_list **sb, int *s_a, int *s_b);
+//LAST_MOVES
+void	last_moves(t_list **stack_a, int a_size);
+
 //BORRAR
 void	free_stack(t_list	**stack);
-
 void	print_stack(t_list *stack);
 void	print_position(t_list *stack);
 

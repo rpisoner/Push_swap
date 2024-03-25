@@ -6,7 +6,7 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:06:43 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/10 15:39:18 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:41:39 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	rra(t_list **a)
 	t_list	*first;
 	t_list	*penultimate;
 
-	if (!(*a)->next)
-		return ;
 	first = *a;
 	penultimate = *a;
 	while ((*a)->next)
@@ -35,8 +33,6 @@ void	rrb(t_list **b)
 	t_list	*first;
 	t_list	*penultimate;
 
-	if (!(*b)->next)
-		return ;
 	first = *b;
 	penultimate = *b;
 	while ((*b)->next)
@@ -50,6 +46,24 @@ void	rrb(t_list **b)
 
 void	rrr(t_list **a, t_list **b)
 {
-	rra(a);
-	rrb(b);
+	t_list	*first;
+	t_list	*penultimate;
+
+	first = *a;
+	penultimate = *a;
+	while ((*a)->next)
+		(*a) = (*a)->next;
+	while (penultimate->next->next)
+		penultimate = penultimate->next;
+	penultimate->next = NULL;
+	(*a)->next = first;
+	first = *b;
+	penultimate = *b;
+	while ((*b)->next)
+		(*b) = (*b)->next;
+	while (penultimate->next->next)
+		penultimate = penultimate->next;
+	penultimate->next = NULL;
+	(*b)->next = first;
+	write(1, "rrr\n", 4);
 }

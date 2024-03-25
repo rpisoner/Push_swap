@@ -22,8 +22,12 @@ FILES = push_swap \
 		lst \
 		errors \
 		argument_parse \
+		two_and_three_elements \
 		algorithm \
-		algorithm2 \
+		index_and_new_pos \
+		prices_and_positions \
+		real_moves \
+		last_moves \
 		free_stuff \
 		pushers \
 		inverters \

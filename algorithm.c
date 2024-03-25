@@ -6,111 +6,58 @@
 /*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:14:31 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/27 20:54:06 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/03/25 18:19:46 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	two_elements(t_list **stack, int n_stack)
-{
-	if ((*stack)->content > (*stack)->next->content)
-	{
-		if (n_stack == 0)
-			sa(stack);
-		else if (n_stack == 1)
-			sb(stack);
-	}
-}
-
-void	three_elements(t_list **stack, int n)
-{
-	if ((*stack)->next->content < (*stack)->content)
-	{
-		if ((*stack)->content > (*stack)->next->next->content && n == 0)
-			ra(stack);
-		if ((*stack)->content > (*stack)->next->content && n == 0)
-			sa(stack);
-		if ((*stack)->content > (*stack)->next->next->content && n == 1)
-			rb(stack);
-		if ((*stack)->content > (*stack)->next->content && n == 1)
-			sb(stack);
-	}
-	else if ((*stack)->content > (*stack)->next->next->content && n == 0)
-		rra(stack);
-	else if ((*stack)->content > (*stack)->next->next->content && n == 1)
-		rrb(stack);
-	else if (n == 0)
-	{
-		sa(stack);
-		ra(stack);
-	}
-	else
-	{
-		sb(stack);
-		rb(stack);
-	}
-}
-
-//while (1)
-//	recorre todooooo el stacka mirando donde deberias colocar cada nodo
-//	y cuando el nodo que quieres pushear y el nodo al que vas a pushear estan en la cabezera pusheas
-
 void	move(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*aux_b;
 	int		b_size;
+	int		a_size;
 
 	b_size = ft_lstsize(*stack_b);
+	a_size = 3;
 	while (b_size != 0)
 	{
-		aux_b = *stack_b;
-		while (aux_b && (*stack_a)->position - aux_b->position != 1)
-			aux_b = aux_b->next;
-		if (!aux_b)
-		{
-			error_exit();
-		}
-		if (aux_b->position > (size_t)(b_size / 2))
-		{
-			while (ft_lstsize(aux_b) != b_size)
-				rrb(stack_b);
-		}
-		else
-		{
-			while (ft_lstsize(aux_b) != b_size)
-				rb(stack_b);
-		}
-		pa(stack_a, stack_b);
-		b_size--;
+		calculate_new_positions(stack_a);
+		calculate_new_positions(stack_b);
+		set_best_pos(stack_a, stack_b);
+		set_prices(stack_b, a_size, b_size);
+		real_moves(stack_a, stack_b, &a_size, &b_size);
 	}
+	last_moves(stack_a, a_size);
 }
 
-void	other_elements(t_list **stack_a, t_list **stack_b)
+void	push_and_substract(t_list **stack_a, t_list **stack_b, int *actual_size)
 {
-	size_t	half;
-	size_t	max_size;
-	size_t	i;
+	pb(stack_a, stack_b);
+	(*actual_size)--;
+}
 
-	i = 0;
+void	other_elements(t_list **stack_a, t_list **stack_b, int stack_size)
+{
+	int		half;
+	int		actual_size;
+
 	half = (ft_lstsize(*stack_a) / 2) + 1;
-	max_size = ft_lstsize(*stack_a);
-	while (i < half)
+	actual_size = stack_size;
+	while (actual_size > half && actual_size >= 3)
 	{
 		if ((*stack_a)->position < half)
-			pb(stack_a, stack_b);
+			push_and_substract(stack_a, stack_b, &actual_size);
 		else
 			ra(stack_a);
-		i++;
 	}
-	while (ft_lstsize(*stack_a) > 3)
+	while (actual_size > 3)
 	{
-		if ((*stack_a)->position == max_size
-			|| (*stack_a)->position == max_size - 1
-			|| (*stack_a)->position == max_size - 2)
+		if ((*stack_a)->position == stack_size
+			|| (*stack_a)->position == stack_size - 1
+			|| (*stack_a)->position == stack_size - 2)
 			ra(stack_a);
 		else
-			pb(stack_a, stack_b);
+			push_and_substract(stack_a, stack_b, &actual_size);
 	}
 	if (!is_organized(*stack_a))
 		three_elements(stack_a, 0);
@@ -120,13 +67,15 @@ void	other_elements(t_list **stack_a, t_list **stack_b)
 void	algorithm(t_list **stack_a)
 {
 	t_list	*stack_b;
+	size_t	a_size;
 
 	stack_b = NULL;
+	a_size = ft_lstsize(*stack_a);
 	assign_index(stack_a);
 	if (ft_lstsize(*stack_a) == 2)
 		two_elements(stack_a, 0);
 	else if (ft_lstsize(*stack_a) == 3)
 		three_elements(stack_a, 0);
-	else
-		other_elements(stack_a, &stack_b);
+	else if (a_size > 3)
+		other_elements(stack_a, &stack_b, ft_lstsize(*stack_a));
 }
