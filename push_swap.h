@@ -76,9 +76,4 @@ void	real_moves(t_list **sa, t_list **sb, int *s_a, int *s_b);
 //LAST_MOVES
 void	last_moves(t_list **stack_a, int a_size);
 
-//BORRAR
-void	free_stack(t_list	**stack);
-void	print_stack(t_list *stack);
-void	print_position(t_list *stack);
-
 #endif
