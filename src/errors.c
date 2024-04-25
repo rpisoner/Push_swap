@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 20:05:09 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/10 16:48:36 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:28:55 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	error_exit(void)
 {

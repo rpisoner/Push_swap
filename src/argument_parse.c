@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   argument_parse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:17:09 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/25 17:48:54 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/24 10:14:16 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 int	is_organized(t_list *list)
 {

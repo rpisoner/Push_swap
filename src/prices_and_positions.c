@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm3.c                                       :+:      :+:    :+:   */
+/*   prices_and_positions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:47:14 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/25 18:02:01 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:29:04 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 int	biggest_pos(t_list **stack_a)
 {

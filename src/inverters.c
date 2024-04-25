@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   inverters.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:06:43 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/25 16:41:39 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:28:58 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	rra(t_list **a)
 {

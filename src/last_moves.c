@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   last_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:54:05 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/25 18:03:11 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:29:00 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 int	calc_ramount(t_list **stack_a, int a_size)
 {

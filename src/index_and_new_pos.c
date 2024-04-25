@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   index_and_new_pos.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:20:27 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/25 18:04:52 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:28:57 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	inicialize_index(t_list **stack_a)
 {

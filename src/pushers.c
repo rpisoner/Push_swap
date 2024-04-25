@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pushers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:07:33 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/09 10:50:22 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:29:13 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	pb(t_list **a, t_list **b)
 {

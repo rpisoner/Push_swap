@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   two_and_three_elements.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:55:06 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/25 17:56:17 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:29:32 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	two_elements(t_list **stack, int n_stack)
 {

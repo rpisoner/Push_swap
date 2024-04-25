@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   real_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 18:00:06 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/25 18:01:13 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/04/22 13:29:15 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	double_rotation(t_list **sa, t_list **sb, int *mov_a, int *mov_b)
 {

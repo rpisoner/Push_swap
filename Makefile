@@ -3,6 +3,7 @@
 #       PROJECT: push_swap                                                              #
 #########################################################################################
 NAME = push_swap
+BONUS_NAME = checker
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
@@ -28,20 +29,21 @@ FILES = push_swap \
 		prices_and_positions \
 		real_moves \
 		last_moves \
-		free_stuff \
 		pushers \
 		inverters \
 		rotators \
 		swappers 
-SRCS = $(addsuffix .c, $(FILES))
-OBJS = $(addsuffix .o, $(FILES))
+SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
+OBJS = $(addprefix src/, $(addsuffix .o, $(FILES)))
 
 #########################################################################################
 # Bonus sources and objects
 #########################################################################################
-BFILES =
-BSRCS = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(BFILES)))
-BOBJS = $(addsuffix .o, $(BFILES))
+BFILES =	push_swap_bonus \
+			get_next_line_bonus \
+			get_next_line_utils_bonus 
+BSRCS = $(addprefix src_bonus/, $(addsuffix .c, $(BFILES)))
+BOBJS = $(addprefix src_bonus/, $(addsuffix .o, $(BFILES)))
 
 #########################################################################################
 # Colors
@@ -67,6 +69,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) -o $(NAME)
+
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(BOBJS)
+	@$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS_NAME)
 
 clean:
 	@$(RM) $(OBJS) $(BOBJS)

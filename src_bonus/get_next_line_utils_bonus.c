@@ -1,25 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils2.c                                 :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 11:08:32 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/02/10 14:10:13 by rpisoner         ###   ########.fr       */
+/*   Created: 2023/12/08 00:44:21 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/04/23 11:38:28 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc_bonus/get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*new;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	new = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!new)
+		return (NULL);
+	if (s1)
+	{
+		while ((char)s1[i] != '\0')
+		{
+			new[i] = (char)s1[i];
+			i++;
+		}
+	}
+	while ((char)s2[j] != '\0')
+	{
+		new[i] = (char)s2[j];
+		i++;
+		j++;
+	}
+	new[i] = '\0';
+	return (new);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -28,10 +59,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	if (len > ((unsigned int)ft_strlen(s)) - start)
 		len = ((unsigned int)ft_strlen(s)) - start;
 	if (start > ft_strlen(s))
-		return ("");
+	{
+		substr = "";
+		return (substr);
+	}
 	substr = (char *)malloc(len + 1);
 	if (!substr)
 		return (0);
@@ -44,27 +80,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substr);
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t			i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	size_t	i;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
 	i = 0;
-	while (s1[i] && s2[i])
+	if (!s)
+		return (NULL);
+	while (*(s + i) != (char)c)
 	{
-		if (*(str1 + i) > *(str2 + i))
-			return ((int)*(str1 + i) - (int)*(str2 + i));
-		else if (*(str1 + i) < *(str2 + i))
-			return ((int)*(str1 + i) - (int)*(str2 + i));
+		if (*(s + i) == '\0')
+			return (0);
 		i++;
 	}
-	if (s1[i] == '\0' && s2[i] == '\0')
-		return (0);
-	else if (s1[i] == '\0')
-		return (-(int)s2[i]);
-	else
-		return ((int)s1[i] - (int)s2[i]);
+	return ((char *)(s + i));
 }
