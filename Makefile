@@ -73,7 +73,7 @@ $(NAME): $(OBJS)
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(BOBJS)
-	@$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS_NAME)
+	@$(CC) $(BOBJS) -o $(BONUS_NAME)
 
 clean:
 	@$(RM) $(OBJS) $(BOBJS)
