@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 20:05:09 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/25 20:54:09 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/05/25 21:18:31 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	duplicated_nums(t_list *lst)
 	numbers = NULL;
 }
 
-#include <stdio.h>
 void	input_error(char **argv)
 {
 	size_t	i;
@@ -78,7 +77,7 @@ void	input_error(char **argv)
 		{
 			if ((argv[i][j] < '0' || argv[i][j] > '9')
 				&& (argv[i][j] != '+' && argv[i][j] != '-'))
-					error_exit();
+				error_exit();
 			if (argv[i][j] == '+' || argv[i][j] == '-')
 			{
 				if (!argv[i][j + 1])
