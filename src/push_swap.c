@@ -22,5 +22,6 @@ int	main(int argc, char *argv[])
 	if (stack_a == NULL || is_organized(stack_a) == 1)
 		exit(1);
 	algorithm(&stack_a);
+	free_stack(stack_a);
 	exit(0);
 }

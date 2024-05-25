@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:03:59 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/03/25 18:08:14 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/05/25 20:16:24 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ int		ft_strcmp(const char *s1, const char *s2);
 //ERRORS
 void	error_exit(void);
 void	duplicated_nums(t_list *lst);
-void	input_error(char *input);
+void	input_error(char **input);
+//FREE
+void	free_stack(t_list *stack);
+void	free_stack_exit_error(t_list *stack);
+void	free_split_exit_error(char	**split, size_t i);
 //PARSE
 t_list	*argument_parse(char **argv);
 int		is_organized(t_list *lst);

@@ -1,27 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_utils_bonus.c                                :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 10:16:45 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/25 20:18:50 by rpisoner         ###   ########.fr       */
+/*   Created: 2024/05/25 19:08:05 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/05/25 20:51:44 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc_bonus/push_swap_bonus.h"
+#include "../inc/push_swap.h"
 
-char	*ft_strchr(const char *s, int c)
+void	free_stack(t_list *stack)
 {
-	size_t	i;
+	t_list	*aux;
+	t_list	*aux2;
 
-	i = 0;
-	while (*(s + i) != (char)c)
+	aux = stack;
+	aux2 = stack;
+	while (aux)
 	{
-		if (*(s + i) == '\0')
-			return (NULL);
-		i++;
+		aux2 = aux->next;
+		free(aux);
+		aux = aux2;
 	}
-	return ((char *)(s + i));
+}
+
+void	free_stack_exit_error(t_list *stack)
+{
+	t_list	*aux;
+	t_list	*aux2;
+
+	aux = stack;
+	aux2 = stack;
+	while (aux)
+	{
+		aux2 = aux->next;
+		free(aux);
+		aux = aux2;
+	}
+	write(2, "Error\n", 6);
+	exit(1);
 }

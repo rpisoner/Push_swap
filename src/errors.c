@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 20:05:09 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/04/22 13:28:55 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/05/25 20:54:09 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	error_exit(void)
 	exit(1);
 }
 
-void	comparison(int *numbers, size_t l)
+void	comparison(int *numbers, size_t l, t_list *lst)
 {
 	size_t	i;
 	size_t	j;
@@ -31,7 +31,10 @@ void	comparison(int *numbers, size_t l)
 		while (j < l)
 		{
 			if (numbers[i] == numbers[j])
-				error_exit();
+			{
+				free(numbers);
+				free_stack_exit_error(lst);
+			}
 			j++;
 		}
 		i++;
@@ -55,27 +58,35 @@ void	duplicated_nums(t_list *lst)
 		current = current->next;
 		i++;
 	}
-	comparison(numbers, i);
+	comparison(numbers, i, lst);
 	free(numbers);
 	numbers = NULL;
 }
 
-void	input_error(char *input)
+#include <stdio.h>
+void	input_error(char **argv)
 {
 	size_t	i;
+	size_t	j;
 
-	i = 0;
-	while (input[i])
+	i = 1;
+	j = 0;
+	while (argv[i])
 	{
-		if ((input[i] < '0' || input[i] > '9')
-			&& (input[i] != '+' && input[i] != '-'))
-			error_exit();
-		if (input[i] == '+' || input[i] == '-')
+		j = 0;
+		while (argv[i][j])
 		{
-			if (!input[i + 1])
-				error_exit();
-			if (input[i + 1] < '0' || input[i + 1] > '9')
-				error_exit();
+			if ((argv[i][j] < '0' || argv[i][j] > '9')
+				&& (argv[i][j] != '+' && argv[i][j] != '-'))
+					error_exit();
+			if (argv[i][j] == '+' || argv[i][j] == '-')
+			{
+				if (!argv[i][j + 1])
+					error_exit();
+				if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
+					error_exit();
+			}
+			j++;
 		}
 		i++;
 	}
