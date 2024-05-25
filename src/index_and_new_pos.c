@@ -17,7 +17,7 @@ void	inicialize_index(t_list **stack_a)
 	t_list	*copy;
 
 	copy = *stack_a;
-	while (copy->next != NULL)
+	while (copy != NULL)
 	{
 		copy->position = 0;
 		copy = copy->next;
