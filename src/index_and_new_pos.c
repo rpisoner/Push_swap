@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-void	inicialize_index(t_list **stack_a)
+void	initialize_index(t_list **stack_a)
 {
 	t_list	*copy;
 
@@ -33,7 +33,7 @@ void	assign_index(t_list **stack_a)
 
 	i = 1;
 	m = *stack_a;
-	inicialize_index(stack_a);
+	initialize_index(stack_a);
 	while (i <= (size_t)ft_lstsize(*stack_a))
 	{
 		copy = m;
