@@ -18,17 +18,6 @@ void	error_exit(void)
 	exit(1);
 }
 
-void	exception_1num_space(char **arguments)
-{
-	size_t	i;
-
-	i = 0;
-	while (arguments[i])
-		i++;
-	if (i <= 1)
-		error_exit();
-}
-
 void	comparison(int *numbers, size_t l)
 {
 	size_t	i;
@@ -71,24 +60,22 @@ void	duplicated_nums(t_list *lst)
 	numbers = NULL;
 }
 
-void	check_errors(char **str)
+void	input_error(char *input)
 {
 	size_t	i;
-	size_t	j;
 
-	i = 1;
-	j = 0;
-	while (str[i])
+	i = 0;
+	while (input[i])
 	{
-		j = 0;
-		if ((str[i][0] < '0' || str[i][0] > '9') && str[i][j++] != '-'
-		&& str[i][0] != '+')
+		if ((input[i] < '0' || input[i] > '9')
+			&& (input[i] != '+' && input[i] != '-'))
 			error_exit();
-		while (str[i][j])
+		if (input[i] == '+' || input[i] == '-')
 		{
-			if ((str[i][j] < '0' || str[i][j] > '9') && str[i][j] != ' ')
+			if (!input[i + 1])
 				error_exit();
-			j++;
+			if (input[i + 1] < '0' || input[i + 1] > '9')
+				error_exit();
 		}
 		i++;
 	}

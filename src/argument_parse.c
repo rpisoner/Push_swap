@@ -27,89 +27,31 @@ int	is_organized(t_list *list)
 	return (1);
 }
 
-void	nodes_connection(t_list **head, t_list **current, t_list *new_node)
-{
-	if (*head == NULL)
-	{
-		*head = new_node;
-		*current = new_node;
-	}
-	else
-	{
-		(*current)->next = new_node;
-		*current = new_node;
-	}
-}
-
-t_list	*case2_argv(int argc, char *argv[])
+t_list	*argument_parse(char **argv)
 {
 	int		i;
-	t_list	*head;
-	t_list	*current;
-	t_list	*new_node;
+	int		j;
+	char	**no_spaces;
+	t_list	*list_aux;
+	t_list	*stack_a;
 
 	i = 1;
-	head = NULL;
-	current = NULL;
-	if (argc == 2)
-		error_exit();
-	while (i < argc)
+	stack_a = NULL;
+	while (argv[i])
 	{
-		new_node = ft_lstnew(ft_atoi(argv[i]));
-		new_node->next = NULL;
-		nodes_connection(&head, &current, new_node);
+		j = 0;
+		no_spaces = ft_split(argv[i], ' ');
+		while (no_spaces[j])
+		{
+			input_error(no_spaces[j]);
+			list_aux = ft_lstnew(ft_atoi(no_spaces[j]));
+			ft_lstadd_back(&stack_a, list_aux);
+			free(no_spaces[j]);
+			j++;
+		}
+		free(no_spaces);
 		i++;
 	}
-	duplicated_nums(head);
-	return (head);
-}
-
-t_list	*case1_argv(char *argv[])
-{
-	char	**arguments;
-	t_list	*head;
-	t_list	*current;
-	t_list	*new_node;
-	size_t	i;
-
-	arguments = ft_split(argv[1], ' ');
-	if (!arguments)
-		exit(0);
-	exception_1num_space(arguments);
-	i = 0;
-	head = NULL;
-	current = NULL;
-	while (arguments[i])
-	{
-		new_node = ft_lstnew(ft_atoi(arguments[i++]));
-		new_node->next = NULL;
-		nodes_connection(&head, &current, new_node);
-	}
-	i = 0;
-	while (arguments[i])
-		free(arguments[i++]);
-	free(arguments);
-	duplicated_nums(head);
-	return (head);
-}
-
-t_list	*argument_parse(int argc, char *argv[])
-{
-	t_list	*stack;
-	size_t	j;
-
-	j = 0;
-	stack = NULL;
-	while (argv[1][j])
-	{
-		if (argv[1][j] == ' ')
-		{
-			stack = case1_argv(argv);
-			break ;
-		}
-		j++;
-	}
-	if (!argv[1][j])
-		stack = case2_argv(argc, argv);
-	return (stack);
+	duplicated_nums(stack_a);
+	return (stack_a);
 }
