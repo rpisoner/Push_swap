@@ -65,7 +65,7 @@ void	three_elements(t_list **stack, int n);
 void	algorithm(t_list **stack_a);
 //INDEX_AND_NEW_POS
 void	assign_index(t_list **stack_a);
-void	inicialize_index(t_list **stack_a);
+void	initialize_index(t_list **stack_a);
 void	calculate_new_positions(t_list **stack_b);
 int		abs(int value);
 //PRICES_AND_POSITIONS
