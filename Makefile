@@ -18,21 +18,21 @@ SRC_DIR = .
 # Sources & objects
 #########################################################################################
 FILES = push_swap \
-        push_swap_utils \
-		push_swap_utils2 \
 		lst \
 		errors \
-		argument_parse \
-		two_and_three_elements \
+		pushers \
+		swappers \
+		rotators \
 		algorithm \
-		index_and_new_pos \
-		prices_and_positions \
+		inverters \
 		real_moves \
 		last_moves \
-		pushers \
-		inverters \
-		rotators \
-		swappers 
+		argument_parse \
+		push_swap_utils \
+		push_swap_utils2 \
+		index_and_new_pos \
+		prices_and_positions \
+		two_and_three_elements 
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix src/, $(addsuffix .o, $(FILES)))
 
@@ -40,7 +40,17 @@ OBJS = $(addprefix src/, $(addsuffix .o, $(FILES)))
 # Bonus sources and objects
 #########################################################################################
 BFILES =	push_swap_bonus \
+			lst_bonus \
+			errors_bonus \
+			pushers_bonus \
+			rotators_bonus \
+			swappers_bonus \
+			inverters_bonus \
 			get_next_line_bonus \
+			argument_parse_bonus \
+			push_swap_utils_bonus \
+			push_swap_utils2_bonus \
+			read_instructions_bonus \
 			get_next_line_utils_bonus 
 BSRCS = $(addprefix src_bonus/, $(addsuffix .c, $(BFILES)))
 BOBJS = $(addprefix src_bonus/, $(addsuffix .o, $(BFILES)))
@@ -73,7 +83,7 @@ $(NAME): $(OBJS)
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(BOBJS)
-	@$(CC) $(BOBJS) -o $(BONUS_NAME)
+	@$(CC) $(BOBJS) $(MLX_FLAGS) -o $(BONUS_NAME)
 
 clean:
 	@$(RM) $(OBJS) $(BOBJS)
@@ -81,7 +91,9 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
+	@$(RM) $(BONUS_NAME)
 	@echo "$(R)Executable file removed: $(NAME)$(DEF_COLOR)"
+	@echo "$(R)Executable file removed: $(BONUS_NAME)$(DEF_COLOR)"
 
 re: fclean all
 
