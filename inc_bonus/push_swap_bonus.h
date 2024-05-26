@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:35:36 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/01 15:10:08 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/05/26 11:45:50 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ typedef struct s_list
 //ERRORS
 void	error_exit(void);
 void	duplicated_nums(t_list *lst);
-void	input_error(char *input);
+void	input_error(char **argv);
+//FREE
+void	free_stack(t_list *stack);
+void	free_stack_exit_error(t_list *stack);
 //UTILS
 char	*ft_strchr(const char *s, int c);
 t_list	*argument_parse(char **argv);

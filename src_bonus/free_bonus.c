@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_bonus.c                                  :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 11:33:57 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/26 11:50:00 by rpisoner         ###   ########.fr       */
+/*   Created: 2024/05/26 11:35:20 by rpisoner          #+#    #+#             */
+/*   Updated: 2024/05/26 11:38:06 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc_bonus/push_swap_bonus.h"
 
-int	main(int argc, char *argv[])
+void	free_stack(t_list *stack)
 {
-	t_list	*stack_a;
+	t_list	*aux;
+	t_list	*aux2;
 
-	if (argc == 1)
-		exit(1);
-	stack_a = argument_parse(argv);
-	if (!stack_a || is_organized(stack_a))
+	aux = stack;
+	aux2 = stack;
+	while (aux)
 	{
-		free_stack(stack_a);
-		exit(1);
+		aux2 = aux->next;
+		free(aux);
+		aux = aux2;
 	}
-	read_instructions(stack_a);
-	if (is_organized(stack_a) == 0)
-		write(1, "KO\n", 3);
-	else
-		write(1, "OK\n", 3);
-	free_stack(stack_a);
-	exit(0);
+}
+
+void	free_stack_exit_error(t_list *stack)
+{
+	t_list	*aux;
+	t_list	*aux2;
+
+	aux = stack;
+	aux2 = stack;
+	while (aux)
+	{
+		aux2 = aux->next;
+		free(aux);
+		aux = aux2;
+	}
+	write(2, "Error\n", 6);
+	exit(1);
 }

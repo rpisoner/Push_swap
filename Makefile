@@ -42,6 +42,7 @@ OBJS = $(addprefix src/, $(addsuffix .o, $(FILES)))
 #########################################################################################
 BFILES =	push_swap_bonus \
 			lst_bonus \
+			free_bonus \
 			errors_bonus \
 			pushers_bonus \
 			rotators_bonus \
