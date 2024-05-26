@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 20:05:09 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/25 21:18:31 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/05/26 11:30:07 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,21 @@ void	input_error(char **argv)
 	size_t	j;
 
 	i = 1;
-	j = 0;
 	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
 		{
 			if ((argv[i][j] < '0' || argv[i][j] > '9')
-				&& (argv[i][j] != '+' && argv[i][j] != '-'))
+				&& (argv[i][j] != '+' && argv[i][j] != '-'
+				&& argv[i][j] != ' '))
 				error_exit();
 			if (argv[i][j] == '+' || argv[i][j] == '-')
 			{
 				if (!argv[i][j + 1])
 					error_exit();
-				if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
+				if ((argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
+					|| (argv[i][j - 1] >= '0' && argv[i][j - 1] <= '9'))
 					error_exit();
 			}
 			j++;
