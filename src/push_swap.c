@@ -15,7 +15,9 @@
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
-
+	
+	if (argv[1][0] == '\0')
+		error_exit();
 	if (argc == 1)
 		exit(1);
 	stack_a = argument_parse(argv);
