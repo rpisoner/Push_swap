@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:33:57 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/26 11:50:00 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/05/29 11:39:03 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		exit(1);
 	stack_a = argument_parse(argv);
-	if (!stack_a || is_organized(stack_a))
+	if (!stack_a)
 	{
 		free_stack(stack_a);
 		exit(1);
