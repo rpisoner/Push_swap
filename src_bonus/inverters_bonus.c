@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inverters.c                                        :+:      :+:    :+:   */
+/*   inverters_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:06:43 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/01 14:08:27 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 18:12:00 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rra(t_list **a)
 	t_list	*first;
 	t_list	*penultimate;
 
-	if (!(*a))
+	if (!(*a) || ft_lstsize(*a) <= 1)
 		return ;
 	first = *a;
 	penultimate = *a;
@@ -34,7 +34,7 @@ void	rrb(t_list **b)
 	t_list	*first;
 	t_list	*penultimate;
 
-	if (!(*b))
+	if (!(*b)  || ft_lstsize(*b) <= 1)
 		return ;
 	first = *b;
 	penultimate = *b;
@@ -51,7 +51,7 @@ void	rrr(t_list **a, t_list **b)
 	t_list	*first;
 	t_list	*penultimate;
 
-	if (!(*a) || !(*b))
+	if (!(*a) || !(*b) || ft_lstsize(*a) <= 1 || ft_lstsize(*b) <= 1)
 		return ;
 	first = *a;
 	penultimate = *a;
