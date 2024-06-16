@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:33:57 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/29 11:39:03 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 17:53:38 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 		free_stack(stack_a);
 		exit(1);
 	}
-	read_instructions(stack_a);
+	read_instructions(&stack_a);
 	if (is_organized(stack_a) == 0)
 		write(1, "KO\n", 3);
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_instructions_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:01:15 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/06/16 15:28:02 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 17:52:11 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	execute_instruction(char *instruct, t_list **stack_a, t_list **stack_b)
 		error_exit();
 }
 
-void	read_instructions(t_list *stack_a)
+void	read_instructions(t_list **stack_a)
 {
 	char	*instruction;
 	t_list	*stack_b;
@@ -48,19 +48,19 @@ void	read_instructions(t_list *stack_a)
 	stack_b = NULL;
 	instruction = get_next_line(0);
 	if (instruction)
-		execute_instruction(instruction, &stack_a, &stack_b);
+		execute_instruction(instruction, stack_a, &stack_b);
 	while (instruction != NULL)
 	{
 		free(instruction);
 		instruction = get_next_line(0);
 		if (instruction)
-			execute_instruction(instruction, &stack_a, &stack_b);
+			execute_instruction(instruction, stack_a, &stack_b);
 	}
 	free(instruction);
 	instruction = NULL;
 	if (ft_lstsize(stack_b) != 0)
 	{
-		free_stack(stack_a);
+		free_stack(*stack_a);
 		free_stack(stack_b);
 		write(1, "KO\n", 2);
 		exit(0);

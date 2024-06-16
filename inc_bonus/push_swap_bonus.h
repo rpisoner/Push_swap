@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:35:36 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/06/16 14:57:57 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 17:52:32 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	input_error(char **argv);
 void	free_stack(t_list *stack);
 //UTILS
 t_list	*argument_parse(char **argv);
-void	read_instructions(t_list *stack_a);
+void	read_instructions(t_list **stack_a);
 //ARGUMENT PARSE
 int		is_organized(t_list *list);
 //LINKED LISTS FUNCTIONS
