@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:01:15 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/06/16 14:59:38 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 15:28:02 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	read_instructions(t_list *stack_a)
 
 	stack_b = NULL;
 	instruction = get_next_line(0);
-	execute_instruction(instruction, &stack_a, &stack_b);
+	if (instruction)
+		execute_instruction(instruction, &stack_a, &stack_b);
 	while (instruction != NULL)
 	{
 		free(instruction);
@@ -59,8 +60,8 @@ void	read_instructions(t_list *stack_a)
 	instruction = NULL;
 	if (ft_lstsize(stack_b) != 0)
 	{
-		free_stack(stack_b);
 		free_stack(stack_a);
+		free_stack(stack_b);
 		write(1, "KO\n", 2);
 		exit(0);
 	}
