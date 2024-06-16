@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_instructions_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:01:15 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/01 15:46:52 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 14:47:13 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	execute_instruction(char *instruct, t_list **stack_a, t_list **stack_b)
 {
-	if (!instruct)
-		return ;
 	if (ft_strcmp(instruct, "sa\n") == 0)
 		sa(stack_a);
 	else if (ft_strcmp(instruct, "sb\n") == 0)
@@ -32,6 +30,12 @@ void	execute_instruction(char *instruct, t_list **stack_a, t_list **stack_b)
 		pa(stack_a, stack_b);
 	else if (ft_strcmp(instruct, "pb\n") == 0)
 		pb(stack_a, stack_b);
+	else if (ft_strcmp(instruct, "rrr\n") == 0)
+		rrr(stack_a, stack_b);
+	else if (ft_strcmp(instruct, "rra\n") == 0)
+		rra(stack_a);
+	else if (ft_strcmp(instruct, "rrb\n") == 0)
+		rrb(stack_b);
 	else
 		error_exit();
 }
@@ -54,6 +58,8 @@ void	read_instructions(t_list *stack_a)
 	instruction = NULL;
 	if (ft_lstsize(stack_b) != 0)
 	{
+		free_stack(stack_b);
+		free_stack(stack_a);
 		write(1, "KO\n", 2);
 		exit(0);
 	}
