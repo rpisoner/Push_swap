@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 11:06:43 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/06/16 18:12:00 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 18:15:13 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rrb(t_list **b)
 	t_list	*first;
 	t_list	*penultimate;
 
-	if (!(*b)  || ft_lstsize(*b) <= 1)
+	if (!(*b) || ft_lstsize(*b) <= 1)
 		return ;
 	first = *b;
 	penultimate = *b;
