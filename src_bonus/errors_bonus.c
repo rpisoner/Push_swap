@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 20:05:09 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/26 12:53:37 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 18:06:48 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	error_exit(void)
 	exit(1);
 }
 
-void	comparison(int *numbers, size_t l)
+void	comparison(t_list *lst, int *numbers, size_t l)
 {
 	size_t	i;
 	size_t	j;
@@ -31,7 +31,11 @@ void	comparison(int *numbers, size_t l)
 		while (j < l)
 		{
 			if (numbers[i] == numbers[j])
+			{
+				free_stack(lst);
+				free(numbers);
 				error_exit();
+			}
 			j++;
 		}
 		i++;
@@ -55,7 +59,7 @@ void	duplicated_nums(t_list *lst)
 		current = current->next;
 		i++;
 	}
-	comparison(numbers, i);
+	comparison(lst, numbers, i);
 	free(numbers);
 	numbers = NULL;
 }
