@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpisoner <rpisoner@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:35:36 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/05/26 11:45:50 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 14:57:57 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ void	duplicated_nums(t_list *lst);
 void	input_error(char **argv);
 //FREE
 void	free_stack(t_list *stack);
-void	free_stack_exit_error(t_list *stack);
 //UTILS
-char	*ft_strchr(const char *s, int c);
 t_list	*argument_parse(char **argv);
 void	read_instructions(t_list *stack_a);
 //ARGUMENT PARSE

@@ -6,7 +6,7 @@
 /*   By: rpisoner <rpisoner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:01:15 by rpisoner          #+#    #+#             */
-/*   Updated: 2024/06/16 14:47:13 by rpisoner         ###   ########.fr       */
+/*   Updated: 2024/06/16 14:59:38 by rpisoner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	read_instructions(t_list *stack_a)
 	{
 		free(instruction);
 		instruction = get_next_line(0);
-		execute_instruction(instruction, &stack_a, &stack_b);
+		if (instruction)
+			execute_instruction(instruction, &stack_a, &stack_b);
 	}
 	free(instruction);
 	instruction = NULL;
