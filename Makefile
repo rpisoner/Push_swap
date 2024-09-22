@@ -81,11 +81,13 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) -o $(NAME)
+	@echo "$(G)Push swap compiled!🔢$(DEF_COLOR)"
 
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(BOBJS)
 	@$(CC) $(BOBJS) -o $(BONUS_NAME)
+	@echo "$(G)Push swap (bonus) compiled!🔢$(DEF_COLOR)"
 
 clean:
 	@$(RM) $(OBJS) $(BOBJS)
